@@ -13,11 +13,16 @@
             </button>
 
             <!-- Topbar Navbar -->
+<<<<<<< HEAD
             <ul class="navbar-nav ml-auto">
+=======
+            <ul class="navbar-nav ml-auto" id="topNav">
+>>>>>>> 036cad269b39460eaf362d09f1e2d745076491fa
             <?php
                     $notif = $this->db->get_where('user_report',['is_read'=>0])->result_array();
                     $notif_count = count($notif);
                 ?>
+<<<<<<< HEAD
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,15 +34,53 @@
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <?php foreach($notif as $data): ?>
+=======
 
-                        <?php if($data['is_read']==0):?>
-                        <a class="dropdown-item" href="<?= base_url('report/notifcontroler/' . $data['id']) ?>"><?= $data['name'] ?> <br> <?= $data['title'] ?></a>                                            
-                        <?php else:?>
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-none d-lg-inline text-gray-600 medium">
+                            <i class="fas fa-bell fa-lg"></i>
+                            <span class="badge badge-info"><?= $notif_count ?></span>
+                        </span>
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <?php foreach($notif as $data): ?>
+>>>>>>> 036cad269b39460eaf362d09f1e2d745076491fa
+
+                            <?php if($data['is_read']==0):?>
+                                <a class="dropdown-item" href="<?= base_url('report/notifcontroler/' . $data['id']) ?>">
+                                    <table cellpadding="5px">
+                                        <tr>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <?= $data['name'] ?> reported an <br> <?= $data['title']?> related to <?= $data['type']?> <br>  on <?= $data['date_reported']?>
+                                            </td>
+                                            
+                                        </tr>
+                                    </table>
+                                </a>                                            
                             <?php endif?>
+<<<<<<< HEAD
                     <?php endforeach; ?>
                              
                     <div class="dropdown-divider"></div>
                 </div>
+=======
+                            <?php if($data['is_read']!=0):?>
+                                <div>
+                                    <p>Test</p>
+                                </div>
+                            <?php endif?>
+
+                                <div class="dropdown-divider"></div>
+
+                        <?php endforeach; ?>                             
+                    </div>
+>>>>>>> 036cad269b39460eaf362d09f1e2d745076491fa
                 </li>
 
                 <div class="topbar-divider d-none d-sm-block"></div>
@@ -66,3 +109,24 @@
 
         </nav>
         <!-- End of Topbar -->
+<style>
+    .dropdown-menu {
+        max-height: 200px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+     
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8); 
+        border-radius: 10px;
+    }
+     
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
+</style>
